@@ -22,6 +22,7 @@ import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { redirect } from 'next/navigation';
 import { userDbEmail } from '@/lib/constants';
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
+import Link from 'next/link';
 
 export default async function DashboardLayout({
   children,
@@ -41,9 +42,11 @@ export default async function DashboardLayout({
       <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/80 backdrop-blur-md border-b px-2 sm:px-4 lg:px-6">
         {/* Left: Logo / Title */}
         <div className="flex items-center">
-          <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent">
-            PapDev Eshop
-          </span>
+          <Link href={"/"}>
+            <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent">
+              PapDev Eshop
+            </span>
+          </Link>
         </div>
 
         {/* Center: Desktop Navbar */}
@@ -67,7 +70,7 @@ export default async function DashboardLayout({
             </SheetTrigger>
             <SheetContent side="left" className="w-64 sm:w-72">
               <SheetTitle className="mt-4 px-4 text-lg font-semibold">
-                PapDev – Eshop
+                PapDev Eshop
               </SheetTitle>
               <Separator className="my-2" />
               <nav className="mt-4 flex flex-col gap-4 px-4 font-medium">

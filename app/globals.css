@@ -1,5 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "uploadthing/tw/v4";
+/* your app source (important so your classes still work) */
+@source "./app";
+
+/* UploadThing’s components */
+@source "../node_modules/@uploadthing/react/dist";
+
+
+
 
 @custom-variant dark (&:is(.dark *));
 
