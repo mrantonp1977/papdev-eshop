@@ -29,6 +29,8 @@ import { useForm } from '@conform-to/react';
 import { parseWithZod } from '@conform-to/zod';
 import { productSchema } from '@/lib/zodSchemas';
 import Image from 'next/image';
+import { categories } from '@/lib/constants';
+import { SubmitButton } from '@/components/SubmitButtons';
 
 export default function ProductCreatePage() {
   const [images, setImages] = useState<string[]>([]);
@@ -147,9 +149,11 @@ export default function ProductCreatePage() {
                       <SelectValue placeholder="Select product category" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="men">Men</SelectItem>
-                      <SelectItem value="women">Women</SelectItem>
-                      <SelectItem value="kids">Kids</SelectItem>
+                      {categories.map((category) => (
+                        <SelectItem key={category.id} value={category.name}>
+                          {category.title}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <p className="text-sm text-red-400">
@@ -160,13 +164,13 @@ export default function ProductCreatePage() {
                   <Label>Images</Label>
                   {images.length > 0 ? (
                     <div className="flex gap-5">
-                      {images.map((img, index) => (
+                      {images.map((image, index) => (
                         <div
                           key={index}
                           className="relative w-[100px] h-[100px]"
                         >
                           <Image
-                            src={img}
+                            src={image}
                             alt={'Product Image'}
                             fill
                             className="object-cover rounded-lg border"
@@ -178,6 +182,12 @@ export default function ProductCreatePage() {
                           >
                             <XIcon className="w-3 h-3" />
                           </button>
+                          <input
+                            type="hidden"
+                            key={fields.images.key}
+                            name={fields.images.name}
+                            value={image}
+                          />
                         </div>
                       ))}
                     </div>
@@ -192,6 +202,7 @@ export default function ProductCreatePage() {
                       }}
                     />
                   )}
+                  <p className="text-sm text-red-400">{fields.images.errors}</p>
                 </div>
               </div>
             </CardContent>
@@ -199,7 +210,7 @@ export default function ProductCreatePage() {
               <Button variant={'outline'} asChild>
                 <Link href={'/dashboard/products'}>Cancel</Link>
               </Button>
-              <Button>Create Product</Button>
+              <SubmitButton title="Create Product" />
             </CardFooter>
           </Card>
         </div>

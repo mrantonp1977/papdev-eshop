@@ -12,5 +12,5 @@ export const productSchema = z.object({
   status: z.enum(['draft', 'published', 'archived']),
   isFeatured: z.boolean().optional(),
   category: z.enum(['men', 'women', 'kids' ]),
-  images: z.array(z.string().min(1, 'Image cannot be empty')),
+  images: z.array(z.string()).min(1, 'Image cannot be empty'),
 });
