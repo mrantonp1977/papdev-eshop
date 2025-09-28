@@ -81,6 +81,19 @@ export default function ProductCreatePage() {
                   </SelectContent>
                 </Select>
               </div>
+              <div className="flex flex-col gap-3">
+                <Label>Category</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select product category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="men">Men</SelectItem>
+                    <SelectItem value="women">Women</SelectItem>
+                    <SelectItem value="kids">Kids</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               <div className="flex flex-col gap-3 border p-4 rounded-xl">
                 <Label>Images</Label>
                 <UploadDropzone
