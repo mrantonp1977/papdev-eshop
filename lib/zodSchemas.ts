@@ -10,7 +10,14 @@ export const productSchema = z.object({
     })
     .min(0, 'Price must be a positive number'),
   status: z.enum(['draft', 'published', 'archived']),
-  isFeatured: z.boolean().optional(),
+  isFeatured: z.preprocess((val) => {
+    if (typeof val === "string") {
+      // handle "true" / "false"
+      if (val === "true") return true;
+      if (val === "false") return false;
+    }
+    return val;
+  }, z.boolean()),
   category: z.enum(['men', 'women', 'kids' ]),
   images: z.array(z.string()).min(1, 'Image cannot be empty'),
 });
