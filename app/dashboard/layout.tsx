@@ -1,7 +1,7 @@
-import React from "react";
-import { DashboardNavbar } from "@/components/DashboardNavbar";
-import { ModeToggle } from "@/components/Toggle-Mode";
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { DashboardNavbar } from '@/components/DashboardNavbar';
+import { ModeToggle } from '@/components/Toggle-Mode';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,36 +9,31 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/dropdown-menu';
+import { Separator } from '@/components/ui/separator';
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { CircleUserIcon, MenuIcon } from "lucide-react";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/navigation";
-import { userDbEmail } from "@/lib/constants";
-import {
-  RegisterLink,
-  LoginLink,
-  LogoutLink,
-} from '@kinde-oss/kinde-auth-nextjs/components';
+} from '@/components/ui/sheet';
+import { CircleUserIcon, MenuIcon } from 'lucide-react';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
+import { redirect } from 'next/navigation';
+import { userDbEmail } from '@/lib/constants';
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
 
 export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const {getUser} = getKindeServerSession();
+  const { getUser } = getKindeServerSession();
   const user = await getUser();
 
   if (!user || user.email !== userDbEmail) {
-    redirect("/");
-  };
-
+    redirect('/');
+  }
 
   return (
     <div className="max-w-screen-2xl mx-auto flex flex-col px-4 sm:px-6 lg:px-8">
@@ -46,7 +41,7 @@ export default async function DashboardLayout({
       <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/80 backdrop-blur-md border-b px-2 sm:px-4 lg:px-6">
         {/* Left: Logo / Title */}
         <div className="flex items-center">
-          <span className="text-2xl font-bold tracking-tight cursor-pointer">
+          <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent">
             PapDev Eshop
           </span>
         </div>
