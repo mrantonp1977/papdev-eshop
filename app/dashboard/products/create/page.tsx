@@ -20,105 +20,190 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
-import { ChevronLeftIcon } from 'lucide-react';
+import { ChevronLeftIcon, XIcon } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useActionState, useState } from 'react';
 import { UploadDropzone } from '@/lib/uploadthing';
+import { createProduct } from '@/lib/actions';
+import { useForm } from '@conform-to/react';
+import { parseWithZod } from '@conform-to/zod';
+import { productSchema } from '@/lib/zodSchemas';
+import Image from 'next/image';
 
 export default function ProductCreatePage() {
-  return (
-    <div className="min-h-screen flex flex-col">
-      {/* Top-left header */}
-      <div className="flex items-center gap-3 p-6">
-        <Button variant="outline" size="icon" className="rounded-md" asChild>
-          <Link href="/dashboard/products">
-            <ChevronLeftIcon className="h-4 w-4" />
-          </Link>
-        </Button>
-        <h1 className="text-2xl font-bold">New Product</h1>
-      </div>
+  const [images, setImages] = useState<string[]>([]);
+  const [lastResult, action] = useActionState(createProduct, undefined);
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: productSchema });
+    },
+    shouldValidate: 'onBlur',
+    shouldRevalidate: 'onInput',
+  });
 
-      {/* Centered card */}
-      <div className="flex flex-1 items-center justify-center">
-        <Card className="w-full max-w-3xl p-6 border border-orange-500/60">
-          <CardHeader>
-            <CardTitle className="text-lg">Create New Product</CardTitle>
-            <CardDescription>
-              Fill in the details below to add a new product to your store.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-3">
-                <Label>Name</Label>
-                <Input type="text" placeholder="Enter product name" />
+  const handleDelete = (index: number) => {
+    setImages(images.filter((_, i) => i !== index));
+  };
+
+  return (
+    <form action={action} id={form.id} onSubmit={form.onSubmit}>
+      <div className="min-h-screen flex flex-col">
+        {/* Top-left header */}
+        <div className="flex items-center gap-3 p-6">
+          <Button variant="outline" size="icon" className="rounded-md" asChild>
+            <Link href="/dashboard/products">
+              <ChevronLeftIcon className="h-4 w-4" />
+            </Link>
+          </Button>
+          <h1 className="text-2xl font-bold">New Product</h1>
+        </div>
+
+        {/* Centered card */}
+        <div className="flex flex-1 items-center justify-center">
+          <Card className="w-full max-w-3xl p-6 border border-orange-500/60">
+            <CardHeader>
+              <CardTitle className="text-xl">Create New Product</CardTitle>
+              <CardDescription>
+                Fill in the details below to add a new product to your store.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3">
+                  <Label>Name</Label>
+                  <Input
+                    type="text"
+                    placeholder="Enter product name"
+                    key={fields.name.key}
+                    name={fields.name.name}
+                    defaultValue={fields.name.initialValue}
+                  />
+                  <p className="text-sm text-red-400">{fields.name.errors}</p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Label>Description</Label>
+                  <Textarea
+                    placeholder="Enter product description"
+                    className="h-18"
+                    key={fields.description.key}
+                    name={fields.description.name}
+                    defaultValue={fields.description.initialValue}
+                  />
+                  <p className="text-sm text-red-400">
+                    {fields.description.errors}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Label>Price</Label>
+                  <Input
+                    type="number"
+                    step="0.01"
+                    placeholder="Enter product price"
+                    key={fields.price.key}
+                    name={fields.price.name}
+                    defaultValue={fields.price.initialValue}
+                    min="0"
+                  />
+                  <p className="text-sm text-red-400">{fields.price.errors}</p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Label>Featured Product</Label>
+                  <Switch
+                    key={fields.isFeatured.key}
+                    name={fields.isFeatured.name}
+                    defaultValue={fields.isFeatured.initialValue}
+                  />
+                  <p className="text-sm text-red-400">
+                    {fields.isFeatured.errors}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Label>Status</Label>
+                  <Select
+                    key={fields.status.key}
+                    name={fields.status.name}
+                    defaultValue={fields.status.initialValue}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select product status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="draft">Draft</SelectItem>
+                      <SelectItem value="published">Published</SelectItem>
+                      <SelectItem value="archived">Archived</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-sm text-red-400">{fields.status.errors}</p>
+                </div>
+                <div className="flex flex-col gap-3">
+                  <Label>Category</Label>
+                  <Select
+                    key={fields.category.key}
+                    name={fields.category.name}
+                    defaultValue={fields.category.initialValue}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select product category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="men">Men</SelectItem>
+                      <SelectItem value="women">Women</SelectItem>
+                      <SelectItem value="kids">Kids</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <p className="text-sm text-red-400">
+                    {fields.category.errors}
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3 border p-4 rounded-xl">
+                  <Label>Images</Label>
+                  {images.length > 0 ? (
+                    <div className="flex gap-5">
+                      {images.map((img, index) => (
+                        <div
+                          key={index}
+                          className="relative w-[100px] h-[100px]"
+                        >
+                          <Image
+                            src={img}
+                            alt={'Product Image'}
+                            fill
+                            className="object-cover rounded-lg border"
+                          />
+                          <button
+                            onClick={() => handleDelete(index)}
+                            type="button"
+                            className="absolute -top-3 -right-3 bg-red-400 rounded-full p-1 shadow-lg"
+                          >
+                            <XIcon className="w-3 h-3" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <UploadDropzone
+                      endpoint="imageUploader"
+                      onClientUploadComplete={(res) => {
+                        setImages(res.map((r) => r.ufsUrl));
+                      }}
+                      onUploadError={() => {
+                        alert('Something went wrong');
+                      }}
+                    />
+                  )}
+                </div>
               </div>
-              <div className="flex flex-col gap-3">
-                <Label>Description</Label>
-                <Textarea
-                  placeholder="Enter product description"
-                  className="h-18"
-                />
-              </div>
-              <div className="flex flex-col gap-3">
-                <Label>Price</Label>
-                <Input type="number" placeholder="Enter product price" />
-              </div>
-              <div className="flex flex-col gap-3">
-                <Label>Featured Product</Label>
-                <Switch />
-              </div>
-              <div className="flex flex-col gap-3">
-                <Label>Status</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select product status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="draft">Draft</SelectItem>
-                    <SelectItem value="published">Published</SelectItem>
-                    <SelectItem value="archived">Archived</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="flex flex-col gap-3">
-                <Label>Category</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select product category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="men">Men</SelectItem>
-                    <SelectItem value="women">Women</SelectItem>
-                    <SelectItem value="kids">Kids</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="flex flex-col gap-3 border p-4 rounded-xl">
-                <Label>Images</Label>
-                <UploadDropzone
-                  endpoint="imageUploader"
-                  onClientUploadComplete={() => {
-                    alert('Upload complete');
-                  }}
-                  onUploadError={() => {
-                    alert('Something went wrong');
-                  }}
-                />
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter className='flex justify-end gap-4'>
-            
-            <Button variant={"outline"} asChild>
-              <Link href={"/dashboard/products"}>
-              Cancel
-              </Link>
-            </Button>
-            <Button type='submit'>Create Product</Button>
-          </CardFooter>
-        </Card>
+            </CardContent>
+            <CardFooter className="flex justify-end gap-4">
+              <Button variant={'outline'} asChild>
+                <Link href={'/dashboard/products'}>Cancel</Link>
+              </Button>
+              <Button>Create Product</Button>
+            </CardFooter>
+          </Card>
+        </div>
       </div>
-    </div>
+    </form>
   );
 }

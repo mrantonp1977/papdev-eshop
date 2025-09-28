@@ -9,6 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@conform-to/react": "^1.11.0",
+    "@conform-to/zod": "^1.11.0",
     "@kinde-oss/kinde-auth-nextjs": "^2.9.2",
     "@prisma/client": "^6.16.2",
     "@radix-ui/react-avatar": "^1.1.10",
@@ -28,7 +30,8 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1",
-    "uploadthing": "^7.7.4"
+    "uploadthing": "^7.7.4",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
