@@ -20,7 +20,7 @@ export default function Dashboard() {
       {/* Stats Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {/* Total Revenue */}
-        <Card className="shadow-orange-700 shadow-lg transition-all duration-200 border border-border/60">
+        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Revenue
@@ -40,7 +40,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Sales */}
-        <Card className="shadow-orange-700 shadow-lg transition-all duration-200 border border-border/60">
+        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Sales
@@ -60,7 +60,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Products */}
-        <Card className="shadow-orange-700 shadow-lg transition-all duration-200 border border-border/60">
+        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Products
@@ -80,7 +80,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Users */}
-        <Card className="shadow-orange-700 shadow-lg transition-all duration-200 border border-border/60">
+        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Users
@@ -103,7 +103,7 @@ export default function Dashboard() {
       {/* Transactions & Recent Sales */}
       <div className="grid gap-6 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         {/* Transactions Card */}
-        <Card className="xl:col-span-2 shadow-orange-700 shadow-lg transition-all duration-200 border border-border/60 ">
+        <Card className="xl:col-span-2 shadow-orange-700 shadow-md transition-all duration-200 border border-border/60 ">
           <CardHeader>
             <CardTitle className="text-lg font-semibold">Transactions</CardTitle>
             <CardDescription>
@@ -118,7 +118,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Recent Sales Card */}
-        <Card className="shadow-orange-700 shadow-lg transition-all duration-200 border border-border/60">
+        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader>
             <CardTitle className="text-lg font-semibold">Recent Sales</CardTitle>
           </CardHeader>

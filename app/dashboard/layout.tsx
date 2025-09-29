@@ -39,12 +39,12 @@ export default async function DashboardLayout({
   return (
     <div className="max-w-screen-2xl mx-auto flex flex-col px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/80 backdrop-blur-md border-b px-2 sm:px-4 lg:px-6">
+      <header className="sticky top-0 z-20 flex h-18 items-center justify-between bg-background/80 backdrop-blur-md border-b-2 border-orange-500/20 px-2 sm:px-4 lg:px-6">
         {/* Left: Logo / Title */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
           <ShoppingCart className="text-amber-400 mr-4 h-8 w-8" />
-            <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-indigo-400 to-amber-400 bg-clip-text text-transparent">
+            <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text text-transparent">
               PapDev Eshop
             </span>
             
@@ -52,7 +52,7 @@ export default async function DashboardLayout({
         </div>
 
         {/* Center: Desktop Navbar */}
-        <nav className="hidden md:flex flex-1 justify-center items-center gap-6 font-medium text-sm lg:text-base">
+        <nav className="hidden md:flex flex-1 justify-center items-center gap-8 font-medium text-sm lg:text-base">
           <DashboardNavbar />
         </nav>
 
