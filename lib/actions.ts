@@ -70,3 +70,19 @@ export async function editProduct(prevState: unknown, formData: FormData) {
 
   return redirect('/dashboard/products');
 }
+
+export async function deleteProduct(formData: FormData) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  if (!user || user.email !== userDbEmail) {
+    return redirect('/');
+  }
+
+  await prisma.product.delete({
+    where: {
+      id: formData.get('productId') as string,
+    },
+  });
+
+  redirect('/dashboard/products');
+}

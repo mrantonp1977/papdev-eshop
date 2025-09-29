@@ -116,7 +116,9 @@ export default function ProductsPageClient() {
                         <DropdownMenuItem asChild>
                           <Link href={`/dashboard/products/${product.id}`}>Edit</Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href={`/dashboard/products/${product.id}/delete`}>Delete</Link>
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>
@@ -144,3 +146,5 @@ export default function ProductsPageClient() {
     </>
   );
 }
+
+
