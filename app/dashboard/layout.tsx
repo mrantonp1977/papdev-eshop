@@ -17,7 +17,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { CircleUserIcon, MenuIcon } from 'lucide-react';
+import { CircleUserIcon, MenuIcon, ShoppingCart } from 'lucide-react';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import { redirect } from 'next/navigation';
 import { userDbEmail } from '@/lib/constants';
@@ -42,10 +42,12 @@ export default async function DashboardLayout({
       <header className="sticky top-0 z-20 flex h-16 items-center justify-between bg-background/80 backdrop-blur-md border-b px-2 sm:px-4 lg:px-6">
         {/* Left: Logo / Title */}
         <div className="flex items-center">
-          <Link href={"/"}>
-            <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent">
+          <Link href="/" className="flex items-center">
+          <ShoppingCart className="text-amber-400 mr-4 h-8 w-8" />
+            <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-indigo-400 to-amber-400 bg-clip-text text-transparent">
               PapDev Eshop
             </span>
+            
           </Link>
         </div>
 
