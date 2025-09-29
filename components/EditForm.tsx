@@ -46,7 +46,6 @@ interface EditFormProps {
 }
 
 export function EditForm({ data }: EditFormProps) {
-  const [isFeatured, setIsFeatured] = useState(data.isFeatured ?? false);
   const [images, setImages] = useState<string[]>(data.images);
   const [lastResult, action] = useActionState(editProduct, undefined);
   const [form, fields] = useForm({
@@ -128,14 +127,9 @@ export function EditForm({ data }: EditFormProps) {
                   <Label>Featured Product</Label>
                   <div className="flex items-center gap-2">
                     <Switch
-                      checked={isFeatured}
-                      onCheckedChange={(val) => setIsFeatured(Boolean(val))}
-                    />
-                    {/* Hidden input to submit actual value */}
-                    <input
-                      type="hidden"
+                      key={fields.isFeatured.key}
                       name={fields.isFeatured.name}
-                      value={isFeatured ? 'true' : 'false'}
+                      defaultChecked={data.isFeatured}
                     />
                   </div>
                   <p className="text-sm text-red-400">

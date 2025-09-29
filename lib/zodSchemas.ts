@@ -10,14 +10,13 @@ export const productSchema = z.object({
     })
     .min(0, 'Price must be a positive number'),
   status: z.enum(['draft', 'published', 'archived']),
-  isFeatured: z.preprocess((val) => {
-    if (typeof val === "string") {
-      // handle "true" / "false"
-      if (val === "true") return true;
-      if (val === "false") return false;
-    }
-    return val;
-  }, z.boolean()),
+  isFeatured:z.boolean().optional(),
   category: z.enum(['men', 'women', 'kids' ]),
   images: z.array(z.string()).min(1, 'Image cannot be empty'),
 });
+
+
+export const bannerSchema = z.object({
+  title: z.string().min(1, 'Name is required'),
+  imageString: z.string()
+})
