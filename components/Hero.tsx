@@ -22,7 +22,7 @@ export async function Hero() {
       <CarouselContent>
         {data.map((item) => (
           <CarouselItem key={item.id}>
-            <div className="relative h-[60vh] lg:h-[80vh] w-full overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative h-[60vh] lg:h-[65vh] w-full overflow-hidden rounded-3xl shadow-2xl">
               {/* Background Image */}
               <Image
                 src={item.imageString}
