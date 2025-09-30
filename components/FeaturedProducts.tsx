@@ -7,6 +7,7 @@ async function getData() {
   const products = await prisma.product.findMany({
     where: {
       status: "published",
+      isFeatured: true,
     },
     select: {
       id: true,
@@ -18,6 +19,7 @@ async function getData() {
     orderBy: {
       createdAt: "desc",
     },
+    take: 4
   });
 
   // Convert Decimal → number
