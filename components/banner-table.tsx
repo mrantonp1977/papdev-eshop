@@ -1,15 +1,15 @@
 // app/dashboard/banner/banner-table.tsx (Client Component)
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 import {
   Table,
   TableHeader,
@@ -17,7 +17,7 @@ import {
   TableHead,
   TableBody,
   TableCell,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -25,7 +25,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 import {
   Pagination,
   PaginationContent,
@@ -33,10 +33,10 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
-import { MoreHorizontal, PlusCircle } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+} from '@/components/ui/pagination';
+import { MoreHorizontal, PlusCircle } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type Banner = {
   id: string;
@@ -68,7 +68,7 @@ export default function BannerTable({
         </Button>
       </div>
 
-      <Card className="border border-orange-500/60">
+      <Card className="border border-blue-500/60">
         <CardHeader>
           <CardTitle>Banners</CardTitle>
           <CardDescription>Manage your banners.</CardDescription>
@@ -126,9 +126,7 @@ export default function BannerTable({
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious
-                    onClick={() =>
-                      setCurrentPage((p) => Math.max(1, p - 1))
-                    }
+                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     aria-disabled={currentPage === 1}
                   />
                 </PaginationItem>

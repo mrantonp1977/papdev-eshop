@@ -1,15 +1,15 @@
 // app/dashboard/products/products-table.tsx
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 import {
   Table,
   TableHeader,
@@ -17,7 +17,7 @@ import {
   TableHead,
   TableBody,
   TableCell,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -25,7 +25,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
 import {
   Pagination,
   PaginationContent,
@@ -33,12 +33,12 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
-import { MoreHorizontal, PlusCircle } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { formatPrice } from "@/lib/helpers/formatPrice";
-import { formatDate } from "@/lib/helpers/formatDate";
+} from '@/components/ui/pagination';
+import { MoreHorizontal, PlusCircle } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { formatPrice } from '@/lib/helpers/formatPrice';
+import { formatDate } from '@/lib/helpers/formatDate';
 
 type Product = {
   id: string;
@@ -46,11 +46,10 @@ type Product = {
   status: string;
   isFeatured: boolean;
   category: string;
-  price: number;      // now plain number
+  price: number; // now plain number
   images: string[];
-  createdAt: string;  // now plain string
+  createdAt: string; // now plain string
 };
-
 
 export default function ProductsTable({
   products,
@@ -76,7 +75,7 @@ export default function ProductsTable({
         </Button>
       </div>
 
-      <Card className="border border-orange-500/60">
+      <Card className="border border-blue-500/60">
         <CardHeader>
           <CardTitle>Products</CardTitle>
           <CardDescription>
@@ -115,11 +114,11 @@ export default function ProductsTable({
                   <TableCell>
                     <span
                       className={`inline-block w-20 text-center px-2 py-0.5 rounded-full text-xs font-semibold ${
-                        product.status === "published"
-                          ? "bg-green-500 text-green-900"
-                          : product.status === "draft"
-                          ? "bg-amber-600 text-amber-900"
-                          : "bg-indigo-400 text-indigo-900"
+                        product.status === 'published'
+                          ? 'bg-green-500 text-green-900'
+                          : product.status === 'draft'
+                          ? 'bg-amber-600 text-amber-900'
+                          : 'bg-indigo-400 text-indigo-900'
                       }`}
                     >
                       {product.status.charAt(0).toUpperCase() +
@@ -178,9 +177,7 @@ export default function ProductsTable({
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious
-                    onClick={() =>
-                      setCurrentPage((p) => Math.max(1, p - 1))
-                    }
+                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     aria-disabled={currentPage === 1}
                   />
                 </PaginationItem>

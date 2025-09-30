@@ -1,18 +1,13 @@
-import React from "react"
+import React from 'react';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import {
-  EuroIcon,
-  PartyPopper,
-  ShoppingBag,
-  User2Icon,
-} from "lucide-react"
+} from '@/components/ui/card';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { EuroIcon, PartyPopper, ShoppingBag, User2Icon } from 'lucide-react';
 
 export default function Dashboard() {
   return (
@@ -20,7 +15,7 @@ export default function Dashboard() {
       {/* Stats Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {/* Total Revenue */}
-        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
+        <Card className="shadow-blue-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Revenue
@@ -40,7 +35,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Sales */}
-        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
+        <Card className="shadow-blue-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Sales
@@ -60,7 +55,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Products */}
-        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
+        <Card className="shadow-blue-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Products
@@ -80,13 +75,13 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Users */}
-        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
+        <Card className="shadow-blue-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader className="flex items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Users
             </CardTitle>
-            <div className="rounded-full bg-orange-100 p-2 dark:bg-orange-900/40">
-              <User2Icon className="h-5 w-5 text-orange-600 dark:text-orange-400" />
+            <div className="rounded-full bg-blue-100 p-2 dark:bg-blue-900/40">
+              <User2Icon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
             </div>
           </CardHeader>
           <CardContent>
@@ -103,9 +98,11 @@ export default function Dashboard() {
       {/* Transactions & Recent Sales */}
       <div className="grid gap-6 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         {/* Transactions Card */}
-        <Card className="xl:col-span-2 shadow-orange-700 shadow-md transition-all duration-200 border border-border/60 ">
+        <Card className="xl:col-span-2 shadow-blue-700 shadow-md transition-all duration-200 border border-border/60 ">
           <CardHeader>
-            <CardTitle className="text-lg font-semibold">Transactions</CardTitle>
+            <CardTitle className="text-lg font-semibold">
+              Transactions
+            </CardTitle>
             <CardDescription>
               Latest transactions from your customers
             </CardDescription>
@@ -118,9 +115,11 @@ export default function Dashboard() {
         </Card>
 
         {/* Recent Sales Card */}
-        <Card className="shadow-orange-700 shadow-md transition-all duration-200 border border-border/60">
+        <Card className="shadow-blue-700 shadow-md transition-all duration-200 border border-border/60">
           <CardHeader>
-            <CardTitle className="text-lg font-semibold">Recent Sales</CardTitle>
+            <CardTitle className="text-lg font-semibold">
+              Recent Sales
+            </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
             <div className="flex items-center gap-4 pb-4 border-b">
@@ -142,7 +141,9 @@ export default function Dashboard() {
               </Avatar>
               <div className="grid gap-1 leading-none">
                 <p className="font-medium">John Doe</p>
-                <p className="text-sm text-muted-foreground">john@example.com</p>
+                <p className="text-sm text-muted-foreground">
+                  john@example.com
+                </p>
               </div>
               <p className="ml-auto font-medium text-green-600 dark:text-green-400">
                 120.00 €
@@ -155,7 +156,9 @@ export default function Dashboard() {
               </Avatar>
               <div className="grid gap-1 leading-none">
                 <p className="font-medium">Maria Silva</p>
-                <p className="text-sm text-muted-foreground">maria@example.com</p>
+                <p className="text-sm text-muted-foreground">
+                  maria@example.com
+                </p>
               </div>
               <p className="ml-auto font-medium text-green-600 dark:text-green-400">
                 250.00 €
@@ -168,7 +171,9 @@ export default function Dashboard() {
               </Avatar>
               <div className="grid gap-1 leading-none">
                 <p className="font-medium">Liam Keller</p>
-                <p className="text-sm text-muted-foreground">liam@example.com</p>
+                <p className="text-sm text-muted-foreground">
+                  liam@example.com
+                </p>
               </div>
               <p className="ml-auto font-medium text-green-600 dark:text-green-400">
                 98.50 €
@@ -178,5 +183,5 @@ export default function Dashboard() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

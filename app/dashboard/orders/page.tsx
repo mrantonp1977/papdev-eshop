@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/ui/card';
 import {
   Table,
   TableBody,
@@ -12,14 +12,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
-import { Badge } from '@/components/ui/badge'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import React from 'react'
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import React from 'react';
 
 export default function OrdersPage() {
   return (
-    <Card className="mt-8 border border-orange-500/60">
+    <Card className="mt-8 border border-blue-500/60">
       <CardHeader className="px-6 py-4">
         <CardTitle className="text-xl font-semibold">Orders</CardTitle>
         <CardDescription className="text-sm text-muted-foreground">
@@ -41,7 +41,10 @@ export default function OrdersPage() {
             <TableRow>
               <TableCell className="flex items-center gap-3">
                 <Avatar className="h-9 w-9">
-                  <AvatarImage src="https://i.pravatar.cc/300?u=john" alt="John Doe" />
+                  <AvatarImage
+                    src="https://i.pravatar.cc/300?u=john"
+                    alt="John Doe"
+                  />
                   <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
                 <div>
@@ -51,20 +54,20 @@ export default function OrdersPage() {
                   </p>
                 </div>
               </TableCell>
-              <TableCell className="text-sm text-muted-foreground">Sale</TableCell>
+              <TableCell className="text-sm text-muted-foreground">
+                Sale
+              </TableCell>
               <TableCell>
-                <Badge variant={"outline"}>Published</Badge>
+                <Badge variant={'outline'}>Published</Badge>
               </TableCell>
               <TableCell className="text-sm text-muted-foreground">
                 25 Nov 2025
               </TableCell>
-              <TableCell className="text-right font-medium">
-                $245.00
-              </TableCell>
+              <TableCell className="text-right font-medium">$245.00</TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </CardContent>
     </Card>
-  )
+  );
 }

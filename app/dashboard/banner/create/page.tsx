@@ -50,7 +50,7 @@ export default function BannerPage() {
 
         {/* Centered card */}
         <div className="flex flex-1 items-center justify-center">
-          <Card className="w-full max-w-3xl p-6 border border-orange-500/60">
+          <Card className="w-full max-w-3xl p-6 border border-blue-500/60">
             <CardHeader>
               <CardTitle className="text-xl">Create New Banner</CardTitle>
               <CardDescription>
@@ -74,7 +74,7 @@ export default function BannerPage() {
                   <Label>Image</Label>
                   <input
                     type="hidden"
-                    value={image ?? ""}
+                    value={image ?? ''}
                     key={fields.imageString.key}
                     name={fields.imageString.name}
                     defaultValue={fields.imageString.initialValue}
@@ -98,7 +98,9 @@ export default function BannerPage() {
                       }}
                     />
                   )}
-                  <p className="text-sm text-red-400">{fields.imageString.errors}</p>
+                  <p className="text-sm text-red-400">
+                    {fields.imageString.errors}
+                  </p>
                 </div>
               </div>
             </CardContent>

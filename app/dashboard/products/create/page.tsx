@@ -63,7 +63,7 @@ export default function ProductCreatePage() {
 
         {/* Centered card */}
         <div className="flex flex-1 items-center justify-center">
-          <Card className="w-full max-w-3xl p-6 border border-orange-500/60">
+          <Card className="w-full max-w-3xl p-6 border border-blue-500/60">
             <CardHeader>
               <CardTitle className="text-xl">Create New Product</CardTitle>
               <CardDescription>

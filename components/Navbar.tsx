@@ -15,11 +15,11 @@ export async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   return (
-    <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between backdrop-blur-md border-b-2 border-orange-500/20 bg-background/80 sticky top-0 z-10">
+    <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between backdrop-blur-md border-b-2 border-blue-500/20 bg-background/80 sticky top-0 z-10">
       <div className="flex items-center">
         <Link href="/" className="flex items-center">
           <ShoppingCart className="text-amber-400 mr-4 h-8 w-8" />
-          <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-indigo-500 to-orange-500 bg-clip-text text-transparent">
+          <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-indigo-500 to-amber-500 bg-clip-text text-transparent">
             PapDev Eshop
           </span>
         </Link>
@@ -47,7 +47,7 @@ export async function Navbar() {
           </>
         ) : (
           <div className="hidden md:flex md:flex-1 md:items-center md:justify-end md:space-x-5">
-            <Button asChild variant={"outline"}>
+            <Button asChild variant={'outline'}>
               <LoginLink>Sign in</LoginLink>
             </Button>
             <Button asChild>
