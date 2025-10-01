@@ -39,7 +39,7 @@ export default async function DashboardLayout({
   return (
     <div className="max-w-screen-2xl mx-auto flex flex-col px-4 sm:px-6 lg:px-8">
       {/* Header */}
-      <header className="sticky top-0 z-20 flex h-18 items-center justify-between bg-background/80 backdrop-blur-md border-b-2 border-blue-500/20 px-2 sm:px-4 lg:px-6">
+      <header className="sticky top-0 z-20 flex h-18 items-center justify-between bg-background/80 backdrop-blur-md border-b-2 border-orange-500/20 px-2 sm:px-4 lg:px-6">
         {/* Left: Logo / Title */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">

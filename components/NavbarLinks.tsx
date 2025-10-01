@@ -17,7 +17,7 @@ export function NavbarLinks() {
           <span
             className={
               pathname === item.href
-                ? 'text-blue-500'
+                ? 'text-orange-500'
                 : 'dark:text-gray-300 hover:text-gray-500 dark:hover:text-gray-400'
             }
           >

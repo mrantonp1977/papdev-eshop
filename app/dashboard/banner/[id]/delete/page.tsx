@@ -18,7 +18,7 @@ export default function DeleteBannerPage({
 }) {
   return (
     <div className="h-[80vh] w-full flex items-center justify-center ">
-      <Card className="w-full max-w-2xl shadow-xl rounded-2xl border border-blue-500/60">
+      <Card className="w-full max-w-2xl shadow-xl rounded-2xl border border-orange-500/60">
         <CardHeader className="text-center space-y-2">
           <CardTitle className="text-3xl font-bold">Are you sure?</CardTitle>
           <CardDescription className="text-base text-gray-300">

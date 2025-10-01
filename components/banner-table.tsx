@@ -68,7 +68,7 @@ export default function BannerTable({
         </Button>
       </div>
 
-      <Card className="border border-blue-500/60">
+      <Card className="border border-orange-500/60">
         <CardHeader>
           <CardTitle>Banners</CardTitle>
           <CardDescription>Manage your banners.</CardDescription>

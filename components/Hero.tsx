@@ -31,7 +31,7 @@ export async function Hero() {
             day. Shop with confidence and elevate your lifestyle.
           </p>
           <Link href="/products/all">
-            <button className="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-lg transition">
+            <button className="px-6 py-3 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-semibold shadow-lg transition">
               Start Shopping
             </button>
           </Link>

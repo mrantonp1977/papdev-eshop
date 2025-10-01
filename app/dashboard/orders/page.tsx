@@ -19,7 +19,7 @@ import React from 'react';
 
 export default function OrdersPage() {
   return (
-    <Card className="mt-8 border border-blue-500/60">
+    <Card className="mt-8 border border-orange-500/60">
       <CardHeader className="px-6 py-4">
         <CardTitle className="text-xl font-semibold">Orders</CardTitle>
         <CardDescription className="text-sm text-muted-foreground">

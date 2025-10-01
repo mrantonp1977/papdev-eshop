@@ -75,7 +75,7 @@ export default function ProductsTable({
         </Button>
       </div>
 
-      <Card className="border border-blue-500/60">
+      <Card className="border border-orange-500/60">
         <CardHeader>
           <CardTitle>Products</CardTitle>
           <CardDescription>
