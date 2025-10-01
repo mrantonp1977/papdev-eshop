@@ -44,7 +44,7 @@ export async function Navbar() {
             <Link href={'/bag'} className="relative p-2 flex items-center mr-2">
               <ShoppingBag className="h-6 w-6 dark:text-indigo-400" />
               {total > 0 && (
-                <span className="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 rounded-full bg-pink-500 text-white text-xs font-bold shadow-md">
+                <span className="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 rounded-full bg-orange-500 text-white text-xs font-extrabold shadow-md">
                   {total}
                 </span>
               )}
