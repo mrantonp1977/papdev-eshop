@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/Theme-Provider';
 import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin';
 import { extractRouterConfig } from 'uploadthing/server';
 import { ourFileRouter } from './api/uploadthing/core';
+import { Toaster } from '@/components/ui/sonner';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -37,6 +38,7 @@ export default function RootLayout({
           <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           {children}
         </ThemeProvider>
+        <Toaster position="top-center" />
       </body>
     </html>
   );
