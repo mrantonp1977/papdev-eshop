@@ -43,8 +43,8 @@ export default async function DashboardLayout({
         {/* Left: Logo / Title */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <ShoppingCart className="text-violet-400 mr-4 h-8 w-8" />
-            <span className="text-3xl font-bold tracking-tight cursor-pointer bg-gradient-to-r from-indigo-500 via-purple-500 to-amber-500 bg-clip-text text-transparent">
+            <ShoppingCart className="text-amber-400 mr-4 h-8 w-8" />
+            <span className="text-3xl font-black italic bg-gradient-to-r from-rose-500 via-orange-400 to-yellow-300 bg-clip-text text-transparent tracking-wider drop-shadow-md">
               PapDev Eshop
             </span>
           </Link>

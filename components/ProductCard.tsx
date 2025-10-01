@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { Button } from './ui/button';
 import { formatPrice } from '@/lib/helpers/formatPrice';
 import Link from 'next/link';
+import { Skeleton } from './ui/skeleton';
 
 interface ProductCardProps {
   item: {
@@ -75,3 +76,17 @@ export function ProductCard({ item }: ProductCardProps) {
     </div>
   );
 }
+
+
+export function ProductCardLoading() {
+  return (
+    <div className="flex flex-col">
+      <Skeleton className="h-[330px] w-full" />
+      <div className="flex flex-col mt-2 gap-y-2">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-6 w-full" />
+      </div>
+      <Skeleton className="h-10 w-full mt-5" />
+    </div>
+  )
+};

@@ -63,7 +63,7 @@ export default async function BagPage() {
                 <div className="flex items-center justify-between sm:justify-end sm:flex-col sm:items-end mt-3 sm:mt-0">
                   <form action={deleteItem}>
                     <input type="hidden" name="productId" value={item.id} />
-                    <SubmitButton title={'Delete'} variant={'secondary'} />
+                    <SubmitButton title={'Remove Item'} variant={'secondary'} />
                   </form>
                 </div>
               </div>

@@ -23,8 +23,8 @@ export async function Hero() {
       <div className="grid lg:grid-cols-2 gap-10 items-center">
         {/* Left side – Text */}
         <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 bg-clip-text text-transparent">
-            Welcome to PapDev Eshop
+          <h1 className="text-4xl md:text-6xl font-black italic bg-gradient-to-r from-rose-500 via-orange-400 to-yellow-300 bg-clip-text text-transparent tracking-wider drop-shadow-md">
+            Welcome to PapDev Eshop 🎉
           </h1>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
             Discover exclusive products, trending items, and amazing deals every
