@@ -1,9 +1,10 @@
 import { FeaturedProducts } from '@/components/FeaturedProducts';
 import { ImageSlider } from '@/components/ImageSlider';
-import { Button } from '@/components/ui/button';
+import { SubmitButton } from '@/components/SubmitButtons';
+import { addItem } from '@/lib/actions';
 import { formatPrice } from '@/lib/helpers/formatPrice';
 import { prisma } from '@/lib/prisma';
-import { ShoppingBagIcon, StarIcon } from 'lucide-react';
+import { ShoppingBag, StarIcon } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
@@ -37,6 +38,8 @@ export default async function ProductIdPage({
   params: { id: string };
 }) {
   const data = await getData(params.id);
+
+  const addProductToCart = addItem.bind(null, data.id);
 
   return (
     <>
@@ -74,14 +77,17 @@ export default async function ProductIdPage({
 
           {/* Actions */}
           <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-            <Button className="w-full md:w-auto" size="lg">
-              <ShoppingBagIcon className="mr-2 h-5 w-5" />
-              Add to Cart
-            </Button>
+            <form>
+              <SubmitButton
+                formAction={addProductToCart}
+                title="Add to Cart"
+                icon={<ShoppingBag className="h-4 w-4" />}
+              />
+            </form>
           </div>
         </div>
       </div>
-      <div className='mt-16'>
+      <div className="mt-16">
         <FeaturedProducts />
       </div>
     </>

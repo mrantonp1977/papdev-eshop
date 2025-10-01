@@ -10,10 +10,17 @@ import {
 import { UserDropdown } from './UserDropdown';
 import { ModeToggle } from './Toggle-Mode';
 import { Button } from './ui/button';
+import { redis } from '@/lib/redis';
+import { Cart } from '@/lib/interfaces';
 
 export async function Navbar() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+
+  const cart: Cart | null = await redis.get(`cart-${user?.id}`);
+
+  const total = cart?.items.reduce((sum, item) => sum + item.quantity, 0) ?? 0;
+
   return (
     <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-4 flex items-center justify-between backdrop-blur-md border-b-2 border-blue-500/20 bg-background/80 sticky top-0 z-10">
       <div className="flex items-center">
@@ -34,10 +41,15 @@ export async function Navbar() {
         </div>
         {user ? (
           <>
-            <Link href={'/bag'} className="group p-2 flex items-center mr-2">
+            <Link href={'/bag'} className="relative p-2 flex items-center mr-2">
               <ShoppingBag className="h-6 w-6 dark:text-indigo-400" />
-              <span className="ml-2 text-sm font-medium">5</span>
+              {total > 0 && (
+                <span className="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 rounded-full bg-pink-500 text-white text-xs font-bold shadow-md">
+                  {total}
+                </span>
+              )}
             </Link>
+
             <UserDropdown
               email={user.email as string}
               name={user.given_name as string}

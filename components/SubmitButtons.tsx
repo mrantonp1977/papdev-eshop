@@ -1,17 +1,31 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { useFormStatus } from "react-dom"; // built-in React hook for pending state
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
+import { Loader2 } from 'lucide-react';
+import { useFormStatus } from 'react-dom';
 
 type SubmitButtonProps = {
   title: string;
-  variant?: "default" | "outline" | "secondary" | "destructive" | "ghost" | "link";
+  variant?:
+    | 'default'
+    | 'outline'
+    | 'secondary'
+    | 'destructive'
+    | 'ghost'
+    | 'link';
   className?: string;
+  formAction?: (formData: FormData) => void | Promise<void>;
+  icon?: React.ReactNode; // ✅ new prop for icons
 };
 
-export function SubmitButton({ title, variant = "default", className }: SubmitButtonProps) {
+export function SubmitButton({
+  title,
+  variant = 'default',
+  className,
+  formAction,
+  icon,
+}: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -20,6 +34,7 @@ export function SubmitButton({ title, variant = "default", className }: SubmitBu
       variant={variant}
       className={className}
       disabled={pending}
+      formAction={formAction}
     >
       {pending ? (
         <>
@@ -27,7 +42,10 @@ export function SubmitButton({ title, variant = "default", className }: SubmitBu
           Please wait...
         </>
       ) : (
-        title
+        <>
+          {icon && <span className="mr-2">{icon}</span>} {/* ✅ put icon inside */}
+          {title}
+        </>
       )}
     </Button>
   );

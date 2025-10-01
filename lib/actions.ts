@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import { parseWithZod } from '@conform-to/zod';
 import { bannerSchema, productSchema } from './zodSchemas';
 import { prisma } from './prisma';
+import { redis } from './redis';
+import { Cart } from './interfaces';
+import { revalidatePath } from 'next/cache';
 
 export async function createProduct(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -78,7 +81,6 @@ export async function deleteProduct(formData: FormData) {
     return redirect('/');
   }
   await prisma.product.delete({
-
     where: {
       id: formData.get('productId') as string,
     },
@@ -86,7 +88,6 @@ export async function deleteProduct(formData: FormData) {
 
   redirect('/dashboard/products');
 }
-
 
 export async function createBanner(prevState: unknown, formData: FormData) {
   const { getUser } = getKindeServerSession();
@@ -127,4 +128,68 @@ export async function deleteBanner(formData: FormData) {
   });
 
   redirect('/dashboard/banner');
+}
+
+export async function addItem(productId: string) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  if (!user) {
+    return redirect('/');
+  }
+
+  const cart: Cart | null = await redis.get(`cart-${user.id}`);
+
+  const selctedProduct = await prisma.product.findUnique({
+    select: {
+      id: true,
+      name: true,
+      price: true,
+      images: true,
+    },
+    where: {
+      id: productId,
+    },
+  });
+  if (!selctedProduct) {
+    throw new Error('Product not found');
+  }
+  let myCart = {} as Cart;
+
+  if (!cart || !cart.items) {
+    myCart = {
+      userId: user.id,
+      items: [
+        {
+          price: Number(selctedProduct.price),
+          id: selctedProduct.id,
+          imageString: selctedProduct.images[0],
+          name: selctedProduct.name,
+          quantity: 1,
+        },
+      ],
+    };
+  } else {
+    let itemFound = false;
+    myCart.items = cart.items.map((item) => {
+      if (item.id === productId) {
+        itemFound = true;
+        item.quantity += 1;
+      }
+      return item;
+    });
+
+    if (!itemFound) {
+      myCart.items.push({
+        price: Number(selctedProduct.price),
+        id: selctedProduct.id,
+        imageString: selctedProduct.images[0],
+        name: selctedProduct.name,
+        quantity: 1,
+      });
+    }
+  }
+  await redis.set(`cart-${user.id}`, myCart);
+
+  revalidatePath("/", "layout")
+  
 }
