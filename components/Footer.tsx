@@ -3,13 +3,13 @@ import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="rounded-lg border-t-6 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300 mt-[90px]">
+    <footer className="rounded-lg border-t-2 border-orange-300 dark:border-orange-700/50 bg-gray-100 dark:bg-gray-900 text-gray-600 dark:text-gray-300 mt-[90px]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Brand */}
           <div>
             <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-              PapDev Eshop
+              ShopItAll
             </h2>
             <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
               High-quality products designed to make your life better.

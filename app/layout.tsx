@@ -13,9 +13,8 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-
 export const metadata: Metadata = {
-  title: 'PapDev Eshop',
+  title: 'ShopItAll',
   description: 'An e-commerce platform built with Next.js and UploadThing',
 };
 
@@ -26,9 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${poppins.variable} antialiased`}
-      >
+      <body className={`${poppins.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
@@ -9,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
+import { userDbEmail } from "@/lib/constants";
 
 interface UserDropdownProps {
   email: string;
@@ -16,7 +18,11 @@ interface UserDropdownProps {
   userImage: string;
 };
 
+
+
 export function UserDropdown({ email, name, userImage }: UserDropdownProps) {
+  const isAdmin = email === userDbEmail;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -37,6 +43,13 @@ export function UserDropdown({ email, name, userImage }: UserDropdownProps) {
           </p>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+
+        {isAdmin && (
+          <DropdownMenuItem asChild>
+            <Link href="/dashboard">Dashboard</Link>
+          </DropdownMenuItem>
+        )}
+
         <DropdownMenuItem asChild>
           <LogoutLink>Log out</LogoutLink>
         </DropdownMenuItem>

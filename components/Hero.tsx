@@ -20,13 +20,13 @@ export async function Hero() {
   const data = await getData();
   return (
     <section className="mt-12 w-full px-6 md:px-12">
-      <div className="grid lg:grid-cols-2 gap-10 items-center">
+      <div className="grid lg:grid-cols-2 gap-16 items-center">
         {/* Left side – Text */}
         <div className="space-y-6">
           <h1 className="text-4xl md:text-6xl font-black italic bg-gradient-to-r from-rose-500 via-orange-400 to-yellow-300 bg-clip-text text-transparent tracking-wider drop-shadow-md">
-            Welcome to PapDev Eshop 🎉
+            Welcome to ShopItAll 🎉. Everything You Need, All in One Place
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 italic">
             Discover exclusive products, trending items, and amazing deals every
             day. Shop with confidence and elevate your lifestyle.
           </p>
@@ -62,8 +62,8 @@ export async function Hero() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex ml-6" />
-            <CarouselNext className="hidden md:flex mr-6" />
+            <CarouselPrevious className="hidden md:flex ml-3" />
+            <CarouselNext className="hidden md:flex mr-3" />
           </Carousel>
         </div>
       </div>

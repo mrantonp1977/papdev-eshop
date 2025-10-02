@@ -27,7 +27,7 @@ export async function Navbar() {
         <Link href="/" className="flex items-center">
           <ShoppingCart className="text-amber-400 mr-4 h-8 w-8" />
           <span className="text-3xl font-black italic bg-gradient-to-r from-rose-500 via-orange-400 to-yellow-300 bg-clip-text text-transparent tracking-wider drop-shadow-md">
-            PapDev Eshop
+            ShopItAll
           </span>
         </Link>
       </div>
@@ -36,13 +36,13 @@ export async function Navbar() {
         <NavbarLinks />
       </div>
       <div className="flex items-center gap-x-4">
-        <div className="mr-6">
+        <div className="mr-2">
           <ModeToggle />
         </div>
         {user ? (
           <>
             <Link href={'/bag'} className="relative p-2 flex items-center mr-2">
-              <ShoppingBag className="h-6 w-6 dark:text-indigo-400" />
+              <ShoppingBag className="h-6 w-6 dark:text-blue-300" />
               {total > 0 && (
                 <span className="absolute -top-1 -right-1 flex items-center justify-center h-5 w-5 rounded-full bg-orange-500 text-white text-xs font-extrabold shadow-md">
                   {total}

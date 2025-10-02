@@ -45,7 +45,7 @@ export default async function DashboardLayout({
           <Link href="/" className="flex items-center">
             <ShoppingCart className="text-amber-400 mr-4 h-8 w-8" />
             <span className="text-3xl font-black italic bg-gradient-to-r from-rose-500 via-orange-400 to-yellow-300 bg-clip-text text-transparent tracking-wider drop-shadow-md">
-              PapDev Eshop
+              ShopItAll
             </span>
           </Link>
         </div>
@@ -71,7 +71,7 @@ export default async function DashboardLayout({
             </SheetTrigger>
             <SheetContent side="left" className="w-64 sm:w-72">
               <SheetTitle className="mt-4 px-4 text-lg font-semibold">
-                PapDev Eshop
+                ShopItAll
               </SheetTitle>
               <Separator className="my-2" />
               <nav className="mt-4 flex flex-col gap-4 px-4 font-medium">
