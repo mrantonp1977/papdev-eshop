@@ -1,6 +1,6 @@
 import { SubmitButton } from '@/components/SubmitButtons';
 import { Button } from '@/components/ui/button';
-import { deleteItem } from '@/lib/actions';
+import { checkOut, deleteItem } from '@/lib/actions';
 import { formatPrice } from '@/lib/helpers/formatPrice';
 import { Cart } from '@/lib/interfaces';
 import { redis } from '@/lib/redis';
@@ -31,7 +31,7 @@ export default async function BagPage() {
             shopping to fill it up!
           </p>
           <Ban className="mt-6 h-12 w-12 text-muted-foreground" />
-          <Button asChild  className="mt-12">
+          <Button asChild className="mt-12">
             <Link href="/" className="flex items-center">
               Shop Now!!
             </Link>
@@ -75,9 +75,9 @@ export default async function BagPage() {
               <p className="text-lg font-semibold">Total</p>
               <p className="text-lg font-bold">{formatPrice(totalPrice)}</p>
             </div>
-            <Button size="lg" className="w-full">
-              Proceed to Checkout
-            </Button>
+            <form action={checkOut}>
+              <SubmitButton title={'Proceed to Checkout'} className='w-full'/>
+            </form>
           </div>
         </div>
       )}
