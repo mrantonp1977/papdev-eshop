@@ -21,7 +21,7 @@ export default function SuccessPage() {
             </p>
           </div>
           <div className="mt-6 text-center sm:mt-8 w-full">
-            <Button asChild variant="default" className="w-full">
+            <Button asChild variant="outline" className="w-full">
               <Link href="/">Back to Homepage</Link>
             </Button>
           </div>

@@ -6,6 +6,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { prisma } from '@/lib/prisma';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -32,7 +33,8 @@ export async function Hero() {
           </p>
           <Link href="/products/all">
             <button className="px-6 py-3 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-semibold shadow-lg transition">
-              Start Shopping
+              Start Shopping Now
+              <ArrowRight className="inline-block ml-2 h-5 w-6" />
             </button>
           </Link>
         </div>

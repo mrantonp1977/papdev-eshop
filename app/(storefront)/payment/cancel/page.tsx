@@ -19,8 +19,8 @@ export default function CancelPage() {
             </p>
           </div>
           <div className="mt-6 text-center sm:mt-8 w-full">
-            <Button asChild variant="default" className="w-full">
-              <Link href="/bag">Back to bag</Link>
+            <Button asChild variant="outline" className="w-full">
+              <Link href="/">Back to Homepage</Link>
             </Button>
           </div>
         </div>
