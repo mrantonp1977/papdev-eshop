@@ -44,9 +44,10 @@ model Banner {
 }
 
 model Order {
-  id     String @id @unique @default(uuid())
-  status String @default("pending")
-  amount Int
+  id        String   @id @unique @default(uuid())
+  status    String   @default("pending")
+  amount    Int
+  createdAt DateTime @default(now())
 
   User   User?   @relation(fields: [userId], references: [id])
   userId String?
